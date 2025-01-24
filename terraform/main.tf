@@ -3,7 +3,7 @@
 variable "hostname" { default = "vm" }
 variable "ip" { default = ["192.168.122.100","192.168.122.101","192.168.122.102","192.168.122.103"]}
 variable "domain" { default = "example.com" }
-variable "ip_type" { default = "dhcp" } # dhcp is other valid type
+variable "ip_type" { default = "static" } # dhcp is other valid type
 variable "memoryMB" { default = 1024*1 }
 variable "cpu" { default = 1 }
 variable "number_instances" { default = 4}
