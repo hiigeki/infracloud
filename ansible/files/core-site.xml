@@ -24,6 +24,6 @@
         </property>
         <property>
                 <name>fs.defaultFS</name>
-                <value>hdfs://vm0.example.com:54310</value>
+                <value>hdfs://vm0.example.com:9000</value>
         </property>
 </configuration>

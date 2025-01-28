@@ -116,12 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 ##JAVA
 export PATH=${HOME}:${PATH}
 export JAVA_HOME=/home/ubuntu/jdk1.8.0_202
 export PATH=$JAVA_HOME/bin:$PATH
-export HADOOP_HOME=$HOME/Documents/3A/bigdata/hadoop-2.7.1
+export HADOOP_HOME=/home/ubuntu/spark/hadoop-2.7.1
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
-export SPARK_HOME=$HOME/Documents/3A/bigdata/spark-2.4.3-bin-hadoop2.7
+export SPARK_HOME=/home/ubuntu/spark/spark-2.4.3-bin-hadoop2.7
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin

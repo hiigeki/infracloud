@@ -7,11 +7,11 @@
         src: files/.bash_profile
         dest: /home/ubuntu
         mode: '0644'
-    # - name: jdk
-      # ansible.builtin.get_url:
-      #   url: https://sd-160040.dedibox.fr/hagimont/software/jdk-8u202-linux-x64.tar.gz
-      #   dest: /home/ubuntu
-      #   mode: '0655'
+    - name: jdk
+      ansible.builtin.get_url:
+        url: https://sd-160040.dedibox.fr/hagimont/software/jdk-8u202-linux-x64.tar.gz
+        dest: /home/ubuntu
+        mode: '0655'
     - name: unpack jdk
       ansible.builtin.command:
         cmd: tar -xzf /home/ubuntu/jdk-8u202-linux-x64.tar.gz
@@ -25,37 +25,41 @@
         path: /home/ubuntu/spark
         state: directory
         mode: '0755'
-    # - name: dl hadoop
-    #   ansible.builtin.get_url:
-    #     url: https://sd-160040.dedibox.fr/hagimont/software/hadoop-2.7.1.tar.gz
-    #     dest: /home/ubuntu/spark
-    #     mode: '0655'
-    # - name: unzip hadoop
-    #   ansible.builtin.command:
-    #     cmd: tar -xzf /home/ubuntu/spark/hadoop-2.7.1.tar.gz /home/ubuntu/spark
-    #     creates: /home/ubuntu/spark/hadoop-2.7.1
-    # - name: del tar
-    #   ansible.builtin.file:
-    #     path: /home/ubuntu/spark/hadoop-2.7.1.tar.gz
-    #     state: 'absent'
-    # - name: dl spark
-    #   ansible.builtin.get_url:
-    #     url: https://sd-160040.dedibox.fr/hagimont/software/spark-2.4.3-bin-hadoop2.7.tgz
-    #     dest: /home/ubuntu/spark
-    #     mode: '0655'
-    # - name: unzip spark
-    #   ansible.builtin.command:
-    #     cmd: tar -xzf /home/ubuntu/spark/spark-2.4.3-bin-hadoop2.7.tgz /home/ubuntu/spark
-    #     creates: /home/ubuntu/spark/spark-2.4.3-bin-hadoop2.7
-    # - name: del tar
-    #   ansible.builtin.file:
-    #     path: /home/ubuntu/spark/spark-2.4.3-bin-hadoop2.7.tgz
-    #     state: 'absent'
-    # - name: update bashrc
-    #   ansible.builtin.copy:
-    #     src: files/.bashrc
-    #     dest: /home/ubuntu
-    #     mode: '0644'
+    - name: dl hadoop
+      ansible.builtin.get_url:
+        url: https://sd-160040.dedibox.fr/hagimont/software/hadoop-2.7.1.tar.gz
+        dest: /home/ubuntu/spark
+        mode: '0655'
+    - name: unzip hadoop
+      ansible.builtin.command:
+        cmd: tar -xzf /home/ubuntu/spark/hadoop-2.7.1.tar.gz -C /home/ubuntu/spark
+        creates: /home/ubuntu/spark/hadoop-2.7.1
+    - name: del tar
+      ansible.builtin.file:
+        path: /home/ubuntu/spark/hadoop-2.7.1.tar.gz
+        state: 'absent'
+    - name: dl spark
+      ansible.builtin.get_url:
+        url: https://sd-160040.dedibox.fr/hagimont/software/spark-2.4.3-bin-hadoop2.7.tgz
+        dest: /home/ubuntu/spark
+        mode: '0655'
+    - name: unzip spark
+      ansible.builtin.command:
+        cmd: tar -xzf /home/ubuntu/spark/spark-2.4.3-bin-hadoop2.7.tgz -C /home/ubuntu/spark
+        creates: /home/ubuntu/spark/spark-2.4.3-bin-hadoop2.7
+    - name: del tar
+      ansible.builtin.file:
+        path: /home/ubuntu/spark/spark-2.4.3-bin-hadoop2.7.tgz
+        state: 'absent'
+    - name: update bashrc
+      ansible.builtin.copy:
+        src: files/.bashrc
+        dest: /home/ubuntu
+        mode: '0644'
+    - name: Appliquer les variables bashrx
+      ansible.builtin.shell: 'source /home/ubuntu/.bashrc'
+      args:
+        executable: /bin/bash
     - name: modifier core-site
       ansible.builtin.copy:
         src: files/core-site.xml

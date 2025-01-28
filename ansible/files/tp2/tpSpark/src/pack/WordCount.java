@@ -12,8 +12,8 @@ import java.util.Arrays;
 public class WordCount { 
 	 
 	public static void main(String[] args) { 
-	    String inputFile = "hdfs://vm0.example.com:54310/input/filesample.txt"; 
-	    String outputFile = "hdfs://vm0.example.com:54310/ouput/resultwc"; 
+	    String inputFile = "hdfs://vm0.example.com:9000/input/filesample.txt"; 
+	    String outputFile = "hdfs://vm0.example.com:9000/ouput/resultwc"; 
 
 	    SparkConf conf = new SparkConf().setAppName("WordCount"); 
 	    JavaSparkContext sc = new JavaSparkContext(conf); 
