@@ -36,6 +36,10 @@ data "template_file" "user_data" {
     hostname = "${var.hostname}${count.index}"
     fqdn = "${var.hostname}${count.index}.${var.domain}"
     public_key = file("~/.ssh/id_ed25519.pub")
+    key0 = file("./sshkeys/id0_ed25519.pub")
+    key1 = file("./sshkeys/id1_ed25519.pub")
+    key2 = file("./sshkeys/id2_ed25519.pub")
+    key3 = file("./sshkeys/id3_ed25519.pub")
   }
 }
 

@@ -1,0 +1,69 @@
+---
+- name: ssh vm0
+  hosts : 192.168.122.100
+  tasks:
+    - name: gerer ssh 1
+      ansible.builtin.copy:
+        src: files/sshkeys/id0_ed25519
+        dest: /home/ubuntu/.ssh/id_ed25519
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu
+    - name: gerer ssh 2
+      ansible.builtin.copy:
+        src: files/sshkeys/id0_ed25519.pub
+        dest: /home/ubuntu/.ssh/id_ed25519.pub
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu
+- name: ssh vm1
+  hosts : 192.168.122.101
+  tasks:
+    - name: gerer ssh 1
+      ansible.builtin.copy:
+        src: files/sshkeys/id1_ed25519
+        dest: /home/ubuntu/.ssh/id_ed25519
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu
+    - name: gerer ssh 2
+      ansible.builtin.copy:
+        src: files/sshkeys/id1_ed25519.pub
+        dest: /home/ubuntu/.ssh/id_ed25519.pub
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu
+- name: ssh vm2
+  hosts : 192.168.122.100
+  tasks:
+    - name: gerer ssh 1
+      ansible.builtin.copy:
+        src: files/sshkeys/id1_ed25519
+        dest: /home/ubuntu/.ssh/id_ed25519
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu
+    - name: gerer ssh 2
+      ansible.builtin.copy:
+        src: files/sshkeys/id1_ed25519.pub
+        dest: /home/ubuntu/.ssh/id_ed25519.pub
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu
+- name: ssh vm3
+  hosts : 192.168.122.103
+  tasks:
+    - name: gerer ssh 1
+      ansible.builtin.copy:
+        src: files/sshkeys/id3_ed25519
+        dest: /home/ubuntu/.ssh/id_ed25519
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu
+    - name: gerer ssh 2
+      ansible.builtin.copy:
+        src: files/sshkeys/id3_ed25519.pub
+        dest: /home/ubuntu/.ssh/id_ed25519.pub
+        mode: '0600'
+        owner: ubuntu
+        group: ubuntu

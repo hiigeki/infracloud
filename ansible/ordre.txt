@@ -1,0 +1,38 @@
+/home/ubuntu
+
+0. gerer les access SSH
+0.1 Ajouter dans .ssh/id-ed
+
+1. Ajouter .bash_profile
+1.2 Ajouter java
+2. Creer dossier spark
+3. DL spark
+4. decompress spark
+5. DL hadoop (hdfs)
+6. decompress hadoop
+7. Modifier .bashrc (javahome etc...)
+8. modifier hadoop/etc/hadoop/core-site.xml
+9. modifier hadoop/etc/hadoop/hdfs-site.xml
+10. modifier hadoop/etc/hadoop/hadoop-env.xml
+11. modifier hadoop/etc/hadoop/slaves
+12. modifier spark/conf/spark-env.sh
+13. modifier spark/conf/slaves
+
+--- SUR VM0 seulement ---
+14. Envoyer tp2
+15. Executer: 
+- hdfs namenode -format
+- start-dfs.sh
+- hdfs dfs -mkdir /input
+- hdfs dfs -mkdir /ouput
+- hdfs dfs -put filesample.txt /input
+- jar cf wc.jar -C /home/ubuntu/spark/tp2/bin pack
+- start-master.sh
+- start-slaves.sh
+- spark-submit --class pack.WordCount --master spark://vm0.example.com:7077 /home/ubuntu/spark/tp2/wc.jar
+- hdfs dfs -get /ouput/resultwc /home/ubuntu/spark
+- stop-master.sh
+- stop-slaves.sh
+- stop-dfs.sh
+
+
