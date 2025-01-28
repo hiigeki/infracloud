@@ -20,12 +20,14 @@
 
 --- SUR VM0 seulement ---
 14. Envoyer tp2
+14.2 envoyer script
 15. Executer: 
 - hdfs namenode -format
 - start-dfs.sh
 - hdfs dfs -mkdir /input
 - hdfs dfs -mkdir /ouput
 - hdfs dfs -put filesample.txt /input
+- javac -cp "lib/*" /home/ubuntu/spark/tp2/tpSpark/src/pack/WordCount.java -d /home/ubuntu/spark/tp2/tpSpark/bin
 - jar cf wc.jar -C /home/ubuntu/spark/tp2/bin pack
 - start-master.sh
 - start-slaves.sh
